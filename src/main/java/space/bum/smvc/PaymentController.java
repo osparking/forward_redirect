@@ -3,11 +3,21 @@ package space.bum.smvc;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping()
+@Slf4j
 public class PaymentController {
+  @PostMapping("/pay_form")
+  public String processPayment(@ModelAttribute Payment payment) {
+    log.info("공과금 지불 금액: {}", payment.toString());
+    return "pay_form";
+  }
+  
   @GetMapping("/pay_form")
   public String showPayForm() {
     return "pay_form";
