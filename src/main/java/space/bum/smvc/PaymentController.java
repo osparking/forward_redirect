@@ -12,10 +12,17 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping()
 @Slf4j
 public class PaymentController {
+  
+  @PostMapping("/pay_result")
+  public String payResult2(@ModelAttribute Payment payment) {
+    log.info("post 결과 금액: {}", payment.toString());
+    return "pay_result";
+  }
+  
   @PostMapping("/pay_form")
   public String processPayment(@ModelAttribute Payment payment) {
     log.info("공과금 지불 금액: {}", payment.toString());
-    return "pay_form";
+    return "forward:pay_result";
   }
   
   @GetMapping("/pay_form")
