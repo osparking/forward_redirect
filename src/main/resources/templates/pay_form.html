@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>공과금 납부</title>
 </head>
 <body>
-
+	<form method="POST" th:object="${payment}">
+		<label for="amount">납입액: </label> <input id="amount"
+			th:field="*{amount}" type="text" th:value="${payment.amount}">
+		<div>
+			<button>납 부</button>
+		</div>
+	</form>
 </body>
 </html>
